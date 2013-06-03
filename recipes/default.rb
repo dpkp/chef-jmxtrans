@@ -38,6 +38,12 @@ ark "jmxtrans" do
   group node['jmxtrans']['user']
 end
 
+file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
+  owner node['jmxtrans']['user']
+  group node['jmxtrans']['user']
+  mode 00755
+end
+
 template "/etc/init.d/jmxtrans" do
   source init_script_file
   owner "root"

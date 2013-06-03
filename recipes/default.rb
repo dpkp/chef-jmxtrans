@@ -19,6 +19,7 @@ user node['jmxtrans']['user']
 
 # merge stock jvm queries w/ container specific ones into single array
 node['jmxtrans']['servers'].each do |server|
+  server['queries'] ||= []
   server['queries'] << node['jmxtrans']['default_queries']['jvm']
   case server['type']
   when 'tomcat'

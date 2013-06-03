@@ -1,3 +1,7 @@
+## 0.1.1
+
+* Fix jmxtrans.sh permissions for execute
+
 ## 0.1.0
 
 * Forked [bryanwb/jmxtrans](https://github.com/bryanwb/jmxtrans)

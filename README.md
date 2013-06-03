@@ -1,8 +1,9 @@
-# <a name="title"></a> chef-jmxtrans[![Build Status](https://secure.travis-ci.org/bryanwb/chef-jmxtrans.png?branch=master)](http://travis-ci.org/bryanwb/chef-jmxtrans)
-
+# chef-jmxtrans [![Build Status](https://secure.travis-ci.org/bflad/chef-jmxtrans.png?branch=master)](http://travis-ci.org/bflad/chef-jmxtrans)
 
 Description
 ===========
+
+_This cookbook is an updated fork of [bryanwb/jmxtrans](https://github.com/bryanwb/jmxtrans)_
 
 I am the jmxtrans cookbook!
 
@@ -62,3 +63,4 @@ Author
 ======
 
 Bryan W. Berry, Copyright 2012, Apache 2.0 license
+Brian Flad, Copyright 2013, Apache 2.0 license

@@ -16,7 +16,7 @@ default['jmxtrans']['default_queries'] = {
   'cassandra' => [
     {
       "obj" => "org.apache.cassandra.db:type=Commitlog",
-      "resultAlias" => "Commitlog",
+      "result_alias" => "Commitlog",
       "attr" => [
         "CompletedTasks",
         "PendingTasks",
@@ -25,7 +25,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.db:type=CompactionManager",
-      "resultAlias" => "CompactionManager",
+      "result_alias" => "CompactionManager",
       "attr" => [
         "PendingTasks",
         "CompletedTasks"
@@ -33,7 +33,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.db:type=StorageProxy",
-      "resultAlias" => "StorageProxy",
+      "result_alias" => "StorageProxy",
       "attr" => [
         "HintsInProgress",
         "RangeOperations",
@@ -50,7 +50,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.db:type=StorageService",
-      "resultAlias" => "StorageService",
+      "result_alias" => "StorageService",
       "attr" => [
         "ExceptionCount",
         "Load"
@@ -58,7 +58,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.net:type=MessagingService",
-      "resultAlias" => "MessagingService",
+      "result_alias" => "MessagingService",
       "attr" => [
         "RecentTotalTimouts",
         "TotalTimeouts"
@@ -66,7 +66,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.request:type=MutationStage",
-      "resultAlias" => "Stage/MutationStage",
+      "result_alias" => "Stage/MutationStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -77,7 +77,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.request:type=ReadRepairStage",
-      "resultAlias" => "Stage/ReadRepairStage",
+      "result_alias" => "Stage/ReadRepairStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -88,7 +88,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.request:type=ReadStage",
-      "resultAlias" => "Stage/ReadStage",
+      "result_alias" => "Stage/ReadStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -99,7 +99,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.request:type=ReplicateOnWriteStage",
-      "resultAlias" => "Stage/ReplicateOnWriteStage",
+      "result_alias" => "Stage/ReplicateOnWriteStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -110,7 +110,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.request:type=RequestResponseStage",
-      "resultAlias" => "Stage/RequestResponseStage",
+      "result_alias" => "Stage/RequestResponseStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -121,7 +121,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=AntiEntropySessions",
-      "resultAlias" => "Internal/AntiEntropySessions",
+      "result_alias" => "Internal/AntiEntropySessions",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -132,7 +132,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=AntiEntropyStage",
-      "resultAlias" => "Internal/AntiEntropyStage",
+      "result_alias" => "Internal/AntiEntropyStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -143,7 +143,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=FlushWriter",
-      "resultAlias" => "Internal/FlushWriter",
+      "result_alias" => "Internal/FlushWriter",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -154,7 +154,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=GossipStage",
-      "resultAlias" => "Internal/GossipStage",
+      "result_alias" => "Internal/GossipStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -165,7 +165,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=HintedHandoff",
-      "resultAlias" => "Internal/HintedHandoff",
+      "result_alias" => "Internal/HintedHandoff",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -176,7 +176,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=InternalResponseStage",
-      "resultAlias" => "Internal/InternalResponseStage",
+      "result_alias" => "Internal/InternalResponseStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -187,7 +187,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=MemtablePostFlusher",
-      "resultAlias" => "Internal/MemtablePostFlusher",
+      "result_alias" => "Internal/MemtablePostFlusher",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -198,7 +198,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=MigrationStage",
-      "resultAlias" => "Internal/MigrationStage",
+      "result_alias" => "Internal/MigrationStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -209,7 +209,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=MiscStage",
-      "resultAlias" => "Internal/MiscStage",
+      "result_alias" => "Internal/MiscStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",
@@ -220,7 +220,7 @@ default['jmxtrans']['default_queries'] = {
     },
     {
       "obj" => "org.apache.cassandra.internal:type=StreamStage",
-      "resultAlias" => "Internal/StreamStage",
+      "result_alias" => "Internal/StreamStage",
       "attr" => [
         "ActiveCount",
         "CompletedTasks",

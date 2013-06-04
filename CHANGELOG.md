@@ -1,3 +1,7 @@
+## 0.2.1
+
+* Fixed result_alias for cassandra type default_queries
+
 ## 0.2.0
 
 * Added cassandra type and default_queries

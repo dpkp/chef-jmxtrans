@@ -13,6 +13,223 @@ default['jmxtrans']['graphite']['port'] = '2003'
 default['jmxtrans']['servers'] = []
 default['jmxtrans']['root_prefix'] = "jmx"
 default['jmxtrans']['default_queries'] = {
+  'cassandra' => [
+    {
+      "obj" => "org.apache.cassandra.db:type=Commitlog",
+      "resultAlias" => "Commitlog",
+      "attr" => [
+        "CompletedTasks",
+        "PendingTasks",
+        "TotalCommitlogSize"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.db:type=CompactionManager",
+      "resultAlias" => "CompactionManager",
+      "attr" => [
+        "PendingTasks",
+        "CompletedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.db:type=StorageProxy",
+      "resultAlias" => "StorageProxy",
+      "attr" => [
+        "HintsInProgress",
+        "RangeOperations",
+        "ReadOperations",
+        "WriteOperations",
+        "RecentRangeLatencyMicros",
+        "RecentWriteLatencyMicros",
+        "RecentReadLatencyMicros",
+        "TotalHints",
+        "TotalRangeLatencyMicros",
+        "TotalWriteLatencyMicros",
+        "TotalReadLatencyMicros"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.db:type=StorageService",
+      "resultAlias" => "StorageService",
+      "attr" => [
+        "ExceptionCount",
+        "Load"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.net:type=MessagingService",
+      "resultAlias" => "MessagingService",
+      "attr" => [
+        "RecentTotalTimouts",
+        "TotalTimeouts"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.request:type=MutationStage",
+      "resultAlias" => "Stage/MutationStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.request:type=ReadRepairStage",
+      "resultAlias" => "Stage/ReadRepairStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.request:type=ReadStage",
+      "resultAlias" => "Stage/ReadStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.request:type=ReplicateOnWriteStage",
+      "resultAlias" => "Stage/ReplicateOnWriteStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.request:type=RequestResponseStage",
+      "resultAlias" => "Stage/RequestResponseStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=AntiEntropySessions",
+      "resultAlias" => "Internal/AntiEntropySessions",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=AntiEntropyStage",
+      "resultAlias" => "Internal/AntiEntropyStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=FlushWriter",
+      "resultAlias" => "Internal/FlushWriter",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=GossipStage",
+      "resultAlias" => "Internal/GossipStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=HintedHandoff",
+      "resultAlias" => "Internal/HintedHandoff",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=InternalResponseStage",
+      "resultAlias" => "Internal/InternalResponseStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=MemtablePostFlusher",
+      "resultAlias" => "Internal/MemtablePostFlusher",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=MigrationStage",
+      "resultAlias" => "Internal/MigrationStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=MiscStage",
+      "resultAlias" => "Internal/MiscStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    },
+    {
+      "obj" => "org.apache.cassandra.internal:type=StreamStage",
+      "resultAlias" => "Internal/StreamStage",
+      "attr" => [
+        "ActiveCount",
+        "CompletedTasks",
+        "CurrentlyBlockedTasks",
+        "PendingTasks",
+        "TotalBlockedTasks"
+      ]
+    }
+  ],
   'jvm' => [
             {
               "result_alias" => "memory",

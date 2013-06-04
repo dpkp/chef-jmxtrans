@@ -1,3 +1,7 @@
+## 0.2.0
+
+* Added cassandra type and default_queries
+
 ## 0.1.1
 
 * Fix jmxtrans.sh permissions for execute

@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright 2012, Bryan W. Berry
+# Copyright 2013, Brian Flad
 #
 # Apache 2.0 license
 #
@@ -22,6 +23,8 @@ servers.each do |server|
   server['queries'] ||= []
   server['queries'] << node['jmxtrans']['default_queries']['jvm']
   case server['type']
+  when 'cassandra'
+    server['queries'] << node['jmxtrans']['default_queries']['cassandra']
   when 'tomcat'
     server['queries'] << node['jmxtrans']['default_queries']['tomcat']
   end

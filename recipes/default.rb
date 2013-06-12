@@ -25,6 +25,14 @@ servers.each do |server|
   case server['type']
   when 'cassandra'
     server['queries'] << node['jmxtrans']['default_queries']['cassandra']
+  when 'hadoop-datanode'
+    server['queries'] << node['jmxtrans']['default_queries']['hadoop-datanode']
+  when 'hadoop-jobtracker'
+    server['queries'] << node['jmxtrans']['default_queries']['hadoop-jobtracker']
+  when 'hadoop-namenode'
+    server['queries'] << node['jmxtrans']['default_queries']['hadoop-namenode']
+  when 'hadoop-tasktracker'
+    server['queries'] << node['jmxtrans']['default_queries']['hadoop-tasktracker']
   when 'kafka'
     server['queries'] << node['jmxtrans']['default_queries']['kafka']
   when 'tomcat'

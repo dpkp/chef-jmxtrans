@@ -230,6 +230,216 @@ default['jmxtrans']['default_queries'] = {
       ]
     }
   ],
+  'hadoop-datanode' => [
+    {
+      "obj" => "hadoop:service=DataNode,name=RpcActivityForPort50020",
+      "resultAlias" => "DataNodeRpcAcitivity",
+      "attr" => [
+        "NumOpenConnections",
+        "callQueueLen",
+        "RpcQueueTimeNumOps",
+        "RpcQueueTimeAvgTime",
+        "RpcQueueTimeMinTime",
+        "RpcQueueTimeMaxTime",
+        "RpcProcessingTimeNumOps",
+        "RpcProcessingTimeAvgTime",
+        "RpcProcessingTimeMinTime",
+        "RpcProcessingTimeMaxTime"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=DataNode,name=DataNodeActivity-*-50010",
+      "resultAlias" => "DataNodeActivity",
+      "attr" => [
+        "bytes_written",
+        "reads_from_remote_client",
+        "replaceBlockOpNumOps",
+        "replaceBlockOpAvgTime",
+        "replaceBlockOpMinTime",
+        "replaceBlockOpMaxTime",
+        "block_verification_failures",
+        "blocks_read",
+        "heartBeatsNumOps",
+        "heartBeatsAvgTime",
+        "heartBeatsMinTime",
+        "heartBeatsMaxTime",
+        "copyBlockOpNumOps",
+        "copyBlockOpAvgTime",
+        "copyBlockOpMinTime",
+        "copyBlockOpMaxTime",
+        "blocks_written",
+        "readBlockOpNumOps",
+        "readBlockOpAvgTime",
+        "readBlockOpMinTime",
+        "readBlockOpMaxTime",
+        "blockChecksumOpNumOps",
+        "blockChecksumOpAvgTime",
+        "blockChecksumOpMinTime",
+        "blockChecksumOpMaxTime",
+        "reads_from_local_client",
+        "writes_from_remote_client",
+        "blocks_verified",
+        "blockReportsNumOps",
+        "blockReportsAvgTime",
+        "blockReportsMinTime",
+        "blockReportsMaxTime",
+        "writes_from_local_client",
+        "blocks_replicated",
+        "bytes_read",
+        "blocks_removed",
+        "writeBlockOpNumOps",
+        "writeBlockOpAvgTime",
+        "writeBlockOpMinTime",
+        "writeBlockOpMaxTime",
+        "readMetadataOpNumOps",
+        "readMetadataOpAvgTime",
+        "readMetadataOpMinTime",
+        "readMetadataOpMaxTime"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=DataNode,name=FSDatasetState*",
+      "resultAlias" => "DataNodeFSDatasetState",
+      "attr" => [
+        "Remaining",
+        "Capacity",
+        "DfsUsed"
+      ]
+    }
+  ],
+  'hadoop-jobtracker' => [
+    {
+      "obj" => "hadoop:service=JobTracker,name=JobTrackerInfo",
+      "resultAlias" => "JobTrackerInfo",
+      "attr" => [
+        "ThreadCount"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=JobTracker,name=RpcActivityForPort8021",
+      "resultAlias" => "JobTrackerRpcActivity",
+      "attr" => [
+        "NumOpenConnections",
+        "ReceivedBytes",
+        "SentBytes",
+        "RpcProcessingTimeAvgTime",
+        "RpcProcessingTimeMinTime",
+        "RpcProcessingTimeMaxTime",
+        "RpcProcessingTimeNumOps",
+        "RpcQueueTimeAvgTime",
+        "RpcQueueTimeMinTime",
+        "RpcQueueTimeMaxTime",
+        "RpcQueueTimeNumOps",
+        "callQueueLen"
+      ]
+    }
+  ],
+  'hadoop-namenode' => [
+    {
+      "obj" => "hadoop:service=NameNode,name=FSNamesystemState",
+      "resultAlias" => "NameNodeFSNamesystemState",
+      "attr" => [
+        "CapacityTotal",
+        "CapacityUsed",
+        "CapacityRemaining",
+        "TotalLoad",
+        "BlocksTotal",
+        "FilesTotal",
+        "PendingReplicationBlocks",
+        "UnderReplicatedBlocks",
+        "ScheduledReplicationBlocks"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=NameNode,name=NameNodeActivity",
+      "resultAlias" => "NameNodeActivity",
+      "attr" => [
+        "AddBlockOps",
+        "fsImageLoadTime",
+        "FilesRenamed",
+        "SyncsNumOps",
+        "SyncsAvgTime",
+        "SyncsMinTime",
+        "SyncsMaxTime",
+        "JournalTransactionsBatchedInSync",
+        "FileInfoOps",
+        "CreateFileOps",
+        "GetListingOps",
+        "TransactionsNumOps",
+        "TransactionsAvgTime",
+        "TransactionsMinTime",
+        "TransactionsMaxTime",
+        "GetBlockLocations",
+        "BlocksCorrupted",
+        "FilesInGetListingOps",
+        "SafemodeTime",
+        "FilesCreated",
+        "FilesAppended",
+        "DeleteFileOps",
+        "blockReportNumOps",
+        "blockReportAvgTime",
+        "blockReportMinTime",
+        "blockReportMaxTime"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=NameNode,name=NameNodeInfo",
+      "resultAlias" => "NameNodeInfo",
+      "attr" => [
+        "Threads",
+        "Used",
+        "Total",
+        "Free",
+        "NonDfsUsedSpace",
+        "PercentUsed",
+        "PercentRemaining",
+        "TotalBlocks",
+        "TotalFiles"
+      ]
+    },
+    {
+      "obj" => "hadoop:service=NameNode,name=RpcActivityForPort8020",
+      "resultAlias" => "NameNodeRpcActivity",
+      "attr" => [
+        "rpcAuthorizationSuccesses",
+        "rpcAuthorizationFailures",
+        "SentBytes",
+        "ReceivedBytes",
+        "NumOpenConnections",
+        "callQueueLen",
+        "rpcAuthenticationSuccesses",
+        "rpcAuthenticationFailures",
+        "RpcQueueTimeNumOps",
+        "RpcQueueTimeAvgTime",
+        "RpcQueueTimeMinTime",
+        "RpcQueueTimeMaxTime",
+        "RpcProcessingTimeNumOps",
+        "RpcProcessingTimeAvgTime",
+        "RpcProcessingTimeMinTime",
+        "RpcProcessingTimeMaxTime"
+      ]
+    }
+  ],
+  'hadoop-tasktracker' => [
+    {
+      "obj"=> "hadoop:service=TaskTracker,name=RpcActivityForPort*",
+      "resultAlias" => "TaskTrackerRpcActivity",
+      "attr"=> [
+        "NumOpenConnections",
+        "ReceivedBytes",
+        "SentBytes",
+        "RpcProcessingTimeAvgTime",
+        "RpcProcessingTimeMinTime",
+        "RpcProcessingTimeMaxTime",
+        "RpcProcessingTimeNumOps",
+        "RpcQueueTimeAvgTime",
+        "RpcQueueTimeMinTime",
+        "RpcQueueTimeMaxTime",
+        "RpcQueueTimeNumOps",
+        "callQueueLen"
+      ]
+    }
+  ],
   'jvm' => [
             {
               "result_alias" => "memory",

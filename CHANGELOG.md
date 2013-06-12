@@ -1,3 +1,10 @@
+## 0.5.0
+
+* Added hadoop-datanode type and default_queries
+* Added hadoop-jobtracker type and default_queries
+* Added hadoop-namename type and default_queries
+* Added hadoop-tasktracker type and default_queries
+
 ## 0.4.1
 
 * Fix storm type to zookeeper

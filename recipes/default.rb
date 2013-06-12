@@ -27,10 +27,10 @@ servers.each do |server|
     server['queries'] << node['jmxtrans']['default_queries']['cassandra']
   when 'kafka'
     server['queries'] << node['jmxtrans']['default_queries']['kafka']
-  when 'storm'
-    server['queries'] << node['jmxtrans']['default_queries']['storm']
   when 'tomcat'
     server['queries'] << node['jmxtrans']['default_queries']['tomcat']
+  when 'zookeeper'
+    server['queries'] << node['jmxtrans']['default_queries']['zookeeper']
   end
   server['queries'].flatten!
 end

@@ -290,7 +290,23 @@ default['jmxtrans']['default_queries'] = {
       ]
     }
   ],
-  'storm' => [
+  'tomcat' => [
+               {
+                 'obj' => "Catalina:type=ThreadPool,name=*",
+                 'result_alias' => "connectors",
+                 'attr' => [ "currentThreadCount", "currentThreadsBusy", "" ]
+               },
+               {
+                 'obj' => "Catalina:type=GlobalRequestProcessor,name=*",
+                 'result_alias' => "requests",
+                 'attr' => [ "bytesReceived", "bytesSent", "errorCount", "maxTime", "processingTime", "requestCount" ]
+               },
+               {  "obj" => "Catalina:type=DataSource,class=javax.sql.DataSource,name=*",
+                 "result_alias" => "datasources",
+                 "attr" => [ "NumActive", "NumIdle", "NumQueryThreads" ]
+               }
+              ],
+  'zookeeper' => [
     {
       "obj" => "org.apache.ZooKeeperService:name0=ReplicatedServer_id*",
       "attr" => [
@@ -333,22 +349,6 @@ default['jmxtrans']['default_queries'] = {
         "PacketsSent"
       ]
     }
-  ],
-  'tomcat' => [
-               {
-                 'obj' => "Catalina:type=ThreadPool,name=*",
-                 'result_alias' => "connectors",
-                 'attr' => [ "currentThreadCount", "currentThreadsBusy", "" ]
-               },
-               {
-                 'obj' => "Catalina:type=GlobalRequestProcessor,name=*",
-                 'result_alias' => "requests",
-                 'attr' => [ "bytesReceived", "bytesSent", "errorCount", "maxTime", "processingTime", "requestCount" ]
-               },
-               {  "obj" => "Catalina:type=DataSource,class=javax.sql.DataSource,name=*",
-                 "result_alias" => "datasources",
-                 "attr" => [ "NumActive", "NumIdle", "NumQueryThreads" ]
-               }
-              ]
+  ]
 }
 

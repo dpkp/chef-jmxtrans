@@ -1,3 +1,7 @@
+## 0.4.1
+
+* Fix storm type to zookeeper
+
 ## 0.4.0
 
 * Added storm type and default_queries

@@ -257,6 +257,39 @@ default['jmxtrans']['default_queries'] = {
                       ]
             }
            ],
+  'kafka' => [
+    {
+      "obj" => "kafka:type=kafka.SocketServerStats",
+      "resultAlias" => "SocketServerStats",
+      "attr" => [
+        "ProduceRequestsPerSecond",
+        "FetchRequestsPerSecond",
+        "TotalProduceRequestMs",
+        "TotalFetchRequestMs",
+        "TotalBytesWritten",
+        "TotalBytesRead",
+        "NumProduceRequests",
+        "NumFetchRequests",
+        "BytesWrittenPerSecond",
+        "BytesReadPerSecond",
+        "MaxFetchRequestMs",
+        "AvgFetchRequestMs",
+        "MaxProduceRequestMs",
+        "AvgProduceRequestMs"
+      ]
+    },
+    {
+      "obj" => "kafka:type=kafka.LogFlushStats",
+      "resultAlias" => "LogFlushStats",
+      "attr" => [
+        "FlushesPerSecond",
+        "MaxFlushMs",
+        "TotalFlushMs",
+        "AvgFlushMs",
+        "NumFlushes"
+      ]
+    }
+  ],
   'tomcat' => [
                {
                  'obj' => "Catalina:type=ThreadPool,name=*",

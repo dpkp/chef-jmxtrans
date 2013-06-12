@@ -1,3 +1,7 @@
+## 0.3.0
+
+* Added kafka type and default_queries
+
 ## 0.2.1
 
 * Fixed result_alias for cassandra type default_queries

@@ -25,6 +25,8 @@ servers.each do |server|
   case server['type']
   when 'cassandra'
     server['queries'] << node['jmxtrans']['default_queries']['cassandra']
+  when 'kafka'
+    server['queries'] << node['jmxtrans']['default_queries']['kafka']
   when 'tomcat'
     server['queries'] << node['jmxtrans']['default_queries']['tomcat']
   end

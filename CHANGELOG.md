@@ -1,3 +1,7 @@
+## 0.4.0
+
+* Added storm type and default_queries
+
 ## 0.3.0
 
 * Added kafka type and default_queries

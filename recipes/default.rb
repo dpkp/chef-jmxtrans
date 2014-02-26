@@ -40,29 +40,28 @@ end
 
 user node['jmxtrans']['user']
 
+include_recipe "jmxtrans::jvm"
+
 servers = node.normal['jmxtrans']['servers']
-servers.each do |server|
-  server['queries'] ||= []
-  server['queries'] << node['jmxtrans']['default_queries']['jvm']
-  case server['type']
-  when 'cassandra'
-    server['queries'] << node['jmxtrans']['default_queries']['cassandra']
-  when 'hadoop-datanode'
-    server['queries'] << node['jmxtrans']['default_queries']['hadoop-datanode']
-  when 'hadoop-jobtracker'
-    server['queries'] << node['jmxtrans']['default_queries']['hadoop-jobtracker']
-  when 'hadoop-namenode'
-    server['queries'] << node['jmxtrans']['default_queries']['hadoop-namenode']
-  when 'hadoop-tasktracker'
-    server['queries'] << node['jmxtrans']['default_queries']['hadoop-tasktracker']
-  when 'kafka'
-    server['queries'] << node['jmxtrans']['default_queries']['kafka']
-  when 'tomcat'
-    server['queries'] << node['jmxtrans']['default_queries']['tomcat']
-  when 'zookeeper'
-    server['queries'] << node['jmxtrans']['default_queries']['zookeeper']
+servers.each do |hostname, server|
+  if server.has_key?(:queries)
+    next
   end
-  server['queries'].flatten!
+  server[:queries] = []
+  case server[:type].to_sym
+  when :cassandra, :hadoop_datanode, :hadoop_jobtracker, :hadoop_namenode, :hadoop_tasktracker, :kafka, :tomcat, :zookeeper
+    log "jmxtrans: adding default queries for server type: #{server[:type]}"
+    include_recipe %(jmxtrans::#{server[:type]})
+    server[:queries] << node['jmxtrans']['default_queries'][server[:type]]
+  else
+    log "jmxtrans: unrecognized server type '#{server[:type]}' -- skipping default queries"
+  end
+
+  # Always include jmx (todo: make this configurable)
+  server[:queries] << node['jmxtrans']['default_queries']['jvm']
+
+  server[:queries].flatten!
+
 end
 
 file "#{node['jmxtrans']['home']}/jmxtrans.sh" do

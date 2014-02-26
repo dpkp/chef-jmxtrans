@@ -1,3 +1,12 @@
+## 0.6.0
+
+[forked by dpkp from bflad/chef-jmxtrans]
+* Added .deb install support
+* move default_queries from attributes to recipes
+* add Kafka 0.8 support
+* use server hash instead of array
+* fix some result_alias bugs in default_queries
+
 ## 0.5.0
 
 * Added hadoop-datanode type and default_queries

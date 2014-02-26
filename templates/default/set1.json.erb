@@ -1,28 +1,34 @@
 
 {
  "servers": [
-
-<% @servers.each_with_index do |server,index| -%>
-<% unless index == 0 -%>
-   ,
-<% end -%>
+<% more = false -%>
+<% @servers.each do |hostname, server| -%>
+  <% if more -%>
+  ,
+  <% end -%>
   {
-   "numQueryThreads": <%= server['numQueryThreads'] || 2 %>,
-   "host": "<%= server['name'] %>",
-   "username": "<%= server['username'] %>",
-   "password": "<%= server['password'] %>",
-   "port": <%= server['port'] %>,
+    <% if server.has_key?('numQueryThreads') -%>
+      <% log "server has numQueryThreads!" -%>
+   "numQueryThreads": <%= server['numQueryThreads'] %>,
+    <% end -%>
+   "host": "<%= server[:host] %>",
+    <% if server.has_key?(:username) -%>
+   "username": "<%= server[:username] %>",
+   "password": "<%= server[:password] %>",
+    <% end -%>
+   "port": <%= server[:port] %>,
+   "alias": "<%= hostname %>",
    "queries": [
-    <% server['queries'].each_with_index do |query,index| -%>
-        <% unless index == 0 -%>
-        ,
-        <% end -%>
+  <% server['queries'].each_with_index do |query,index| -%>
+    <% unless index == 0 -%>
+    ,
+    <% end -%>
     {
      "outputWriters": [
       {
        "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
        "settings": {
-        "typeNames": [   "name" ],
+        "typeNames": [ "name" ],
         "host": "<%= @graphite_host %>",
         "port": <%= @graphite_port %>,
         "rootPrefix": "<%= @root_prefix %>"
@@ -33,9 +39,10 @@
      "obj": "<%= query['obj'] %>",
      "attr": [<%= query['attr'].map {|t| "\""+t.to_s+"\""}.join(', ') %>]
     }
-    <% end -%>
+  <% end -%>
     ]
  }
+  <% more = true -%>
 <% end -%>
 ] 
 }

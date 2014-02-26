@@ -1,3 +1,11 @@
+## 0.7.0
+
+* Added .deb install support
+* move default_queries from attributes to recipes
+* add Kafka 0.8 support
+* use server hash instead of array
+* fix some result_alias bugs in default_queries
+
 ## 0.6.0
 
 * Enhancement: [#1][] Install .debs via dpkg_package

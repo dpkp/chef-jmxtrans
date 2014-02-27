@@ -8,12 +8,34 @@
 # Apache 2.0 license
 #
 
-include_recipe "ark"
+if node['jmxtrans']['url'].end_with?('.zip')
+  include_recipe "ark"
 
-if platform_family?("debian")
-  init_script_file = "jmxtrans.init.deb.erb"
-elsif platform_family?("rhel")
-  init_script_file = "jmxtrans.init.el.erb"
+  ark "jmxtrans" do
+    url node['jmxtrans']['url']
+    checksum node['jmxtrans']['checksum']
+    version "latest"
+    prefix_root node['jmxtrans']['install_prefix']
+    prefix_home node['jmxtrans']['install_prefix']
+    owner node['jmxtrans']['user']
+    group node['jmxtrans']['user']
+  end
+
+elsif node['jmxtrans']['url'].end_with?('.deb')
+  tmp_file = "/tmp" << node['jmxtrans']['url'].match('/[^/]*$').to_s
+  remote_file tmp_file do
+    source node['jmxtrans']['url']
+    mode 0644
+    checksum node['jmxtrans']['checksum']
+  end
+
+  dpkg_package "jmxtrans" do
+    source tmp_file
+    action :install
+  end
+
+else
+  raise "Unrecognized url install type for jmxtrans (only .zip / .deb currently supported)"
 end
 
 user node['jmxtrans']['user']
@@ -43,15 +65,6 @@ servers.each do |server|
   server['queries'].flatten!
 end
 
-ark "jmxtrans" do
-  url node['jmxtrans']['url']
-  checksum node['jmxtrans']['checksum']
-  version "latest"
-  prefix_root '/opt'
-  prefix_home '/opt'
-  owner node['jmxtrans']['user']
-  group node['jmxtrans']['user']
-end
 
 file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
   owner node['jmxtrans']['user']
@@ -60,7 +73,15 @@ file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
 end
 
 template "/etc/init.d/jmxtrans" do
-  source init_script_file
+
+  if platform_family?("debian")
+    source "jmxtrans.init.deb.erb"
+  elsif platform_family?("rhel")
+    source "jmxtrans.init.el.erb"
+  else
+    raise "Unknown platform family in jmxtrans -- don't have an init template!"
+  end
+
   owner "root"
   group "root"
   mode  "0755"

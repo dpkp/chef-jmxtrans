@@ -70,21 +70,26 @@ file "#{node['jmxtrans']['home']}/jmxtrans.sh" do
   mode 00755
 end
 
-template "/etc/init.d/jmxtrans" do
-
-  if platform_family?("debian")
+if platform_family?("debian")
+  template "/etc/init.d/jmxtrans" do
     source "jmxtrans.init.deb.erb"
-  elsif platform_family?("rhel")
-    source "jmxtrans.init.el.erb"
-  else
-    raise "Unknown platform family in jmxtrans -- don't have an init template!"
+    owner "root"
+    group "root"
+    mode  "0755"
+    variables( :name => 'jmxtrans' )
+    notifies :restart, "service[jmxtrans]"
   end
-
-  owner "root"
-  group "root"
-  mode  "0755"
-  variables( :name => 'jmxtrans' )
-  notifies :restart, "service[jmxtrans]"
+elsif platform_family?("rhel")
+  template "/etc/init.d/jmxtrans" do
+    source "jmxtrans.init.el.erb"
+    owner "root"
+    group "root"
+    mode  "0755"
+    variables( :name => 'jmxtrans' )
+    notifies :restart, "service[jmxtrans]"
+  end
+else
+  raise "Unknown platform family in jmxtrans -- don't have an init template!"
 end
 
 template "/etc/default/jmxtrans" do

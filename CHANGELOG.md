@@ -1,3 +1,7 @@
+## 0.7.1
+
+* Support 'statsd' outputWriter
+
 ## 0.7.0
 
 * Added .deb install support

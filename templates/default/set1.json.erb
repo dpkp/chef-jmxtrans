@@ -25,15 +25,29 @@
     <% end -%>
     {
      "outputWriters": [
+     <% case @output_type -%>
+     <% when 'graphite' -%>
       {
        "@class": "com.googlecode.jmxtrans.model.output.GraphiteWriter",
        "settings": {
         "typeNames": [ "name" ],
-        "host": "<%= @graphite_host %>",
-        "port": <%= @graphite_port %>,
+        "host": "<%= @output_host %>",
+        "port": <%= @output_port %>,
         "rootPrefix": "<%= @root_prefix %>"
        }
       }
+     <% when 'statsd' -%>
+      {
+       "@class": "com.googlecode.jmxtrans.model.output.StatsDWriter",
+       "settings": {
+        "typeNames": [ "name" ],
+        "host": "<%= @output_host %>",
+        "port": <%= @output_port %>,
+	"rootPrefix": "<%= @root_prefix %>",
+        "bucketType": "c"
+       }
+      }
+     <% end -%>
      ],
      "resultAlias": "<%= query['result_alias'] %>",
      "obj": "<%= query['obj'] %>",

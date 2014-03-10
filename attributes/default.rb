@@ -7,8 +7,9 @@ default['jmxtrans']['checksum'] = '4a1e705c0ca69bd040bbc5523f26476a671ac300ba52c
 default['jmxtrans']['heap_size'] = '512'
 default['jmxtrans']['run_interval'] = '60'
 default['jmxtrans']['log_level'] = 'debug'
-default['jmxtrans']['graphite']['host'] = 'graphite'
-default['jmxtrans']['graphite']['port'] = '2003'
+default['jmxtrans']['output']['type'] = 'graphite'
+default['jmxtrans']['output']['host'] = 'graphite'
+default['jmxtrans']['output']['port'] = '2003'
 
 default['jmxtrans']['root_prefix'] = "jmx"
 default['jmxtrans']['default_queries'] = {}

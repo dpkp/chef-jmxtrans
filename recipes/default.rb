@@ -125,10 +125,11 @@ template "#{node['jmxtrans']['home']}/json/set1.json" do
   notifies :restart, 'service[jmxtrans]'
   variables(
             :servers => servers,
-            :graphite_host => node['jmxtrans']['graphite']['host'],
-            :graphite_port => node['jmxtrans']['graphite']['port'],
+            :output_type => node['jmxtrans']['output']['type'],
+            :output_host => node['jmxtrans']['output']['host'],
+            :output_port => node['jmxtrans']['output']['port'],
             :root_prefix => node['jmxtrans']['root_prefix']
-            )
+           )
 end
 
 package 'gzip'

@@ -11,6 +11,7 @@
 if node['jmxtrans']['url'] == nil or node['jmxtrans']['url'] == ''
   package "jmxtrans" do
     action :install
+    options "--force-yes"
   end
 
 elsif node['jmxtrans']['url'].end_with?('.zip')

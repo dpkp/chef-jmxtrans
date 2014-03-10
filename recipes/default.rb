@@ -8,7 +8,12 @@
 # Apache 2.0 license
 #
 
-if node['jmxtrans']['url'].end_with?('.zip')
+if node['jmxtrans']['url'] == nil or node['jmxtrans']['url'] == ''
+  package "jmxtrans" do
+    action :install
+  end
+
+elsif node['jmxtrans']['url'].end_with?('.zip')
   include_recipe "ark"
 
   ark "jmxtrans" do

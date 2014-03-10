@@ -1,3 +1,7 @@
+## 0.6.1
+
+* Support 'statsd' outputWriter
+
 ## 0.6.0
 
 * Enhancement: [#1][] Install .debs via dpkg_package

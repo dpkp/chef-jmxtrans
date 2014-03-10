@@ -21,8 +21,9 @@ Depends on the ark cookbook for .zip installs
 Attributes
 ==========
 
-* `node['jmxtrans']['graphite']['host']` - defaults to 'graphite'
-* `node['jmxtrans']['graphite']['port']` - default to 2003
+* `node['jmxtrans']['output']['type']` - defaults to 'graphite', 'statsd' also supported
+* `node['jmxtrans']['output']['host']` - defaults to 'graphite'
+* `node['jmxtrans']['output']['port']` - default to 2003
 * `node['jmxtrans']['servers']` - hash of servers { 'alias' => { ..config.. }
   to query for jmx data along with the properties needed to access each one
 * `node['jmxtrans']['root_prefix']` - root prefix for the graphite

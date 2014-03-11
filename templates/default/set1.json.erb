@@ -2,7 +2,7 @@
 {
  "servers": [
 <% more = false -%>
-<% @servers.each do |hostname, server| -%>
+<% @servers.each do |server| -%>
   <% if more -%>
   ,
   <% end -%>
@@ -17,7 +17,9 @@
    "password": "<%= server[:password] %>",
     <% end -%>
    "port": <%= server[:port] %>,
-   "alias": "<%= hostname %>",
+    <% if server.has_key?(:alias) -%>
+   "alias": "<%= server[:alias] %>",
+    <% end -%>
    "queries": [
   <% server['queries'].each_with_index do |query,index| -%>
     <% unless index == 0 -%>

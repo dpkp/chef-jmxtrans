@@ -49,7 +49,7 @@ user node['jmxtrans']['user']
 include_recipe "jmxtrans::jvm"
 
 servers = node.normal['jmxtrans']['servers']
-servers.each do |hostname, server|
+servers.each do |server|
   if server.has_key?(:queries)
     next
   end

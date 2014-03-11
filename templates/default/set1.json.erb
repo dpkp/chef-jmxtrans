@@ -7,9 +7,8 @@
   ,
   <% end -%>
   {
-    <% if server.has_key?('numQueryThreads') -%>
-      <% log "server has numQueryThreads!" -%>
-   "numQueryThreads": <%= server['numQueryThreads'] %>,
+    <% if server.has_key?(:numQueryThreads) -%>
+   "numQueryThreads": <%= server[:numQueryThreads] %>,
     <% end -%>
    "host": "<%= server[:host] %>",
     <% if server.has_key?(:username) -%>
@@ -21,7 +20,7 @@
    "alias": "<%= server[:alias] %>",
     <% end -%>
    "queries": [
-  <% server['queries'].each_with_index do |query,index| -%>
+  <% server[:queries].each_with_index do |query,index| -%>
     <% unless index == 0 -%>
     ,
     <% end -%>

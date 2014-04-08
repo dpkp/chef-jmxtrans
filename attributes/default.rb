@@ -11,5 +11,5 @@ default['jmxtrans']['output']['type'] = 'graphite'
 default['jmxtrans']['output']['host'] = 'graphite'
 default['jmxtrans']['output']['port'] = '2003'
 
-default['jmxtrans']['root_prefix'] = "jmx"
+default['jmxtrans']['root_prefix'] = 'jmx'
 default['jmxtrans']['default_queries'] = {}

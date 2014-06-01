@@ -8,6 +8,8 @@
 # Apache 2.0 license
 #
 
+user node['jmxtrans']['user']
+
 if node['jmxtrans']['url'].end_with?('.zip')
   include_recipe 'ark'
 
@@ -37,8 +39,6 @@ elsif node['jmxtrans']['url'].end_with?('.deb')
 else
   fail 'Unrecognized url install type for jmxtrans (only .zip / .deb currently supported)'
 end
-
-user node['jmxtrans']['user']
 
 servers = node.normal['jmxtrans']['servers']
 servers.each do |server|

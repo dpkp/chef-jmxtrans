@@ -113,7 +113,8 @@ directory "#{node['jmxtrans']['home']}/json" do
   mode '0755'
 end
 
-template "#{node['jmxtrans']['home']}/json/set1.json" do
+template 'set1.json' do
+  path "#{node['jmxtrans']['home']}/json/set1.json"
   source 'set1.json.erb'
   owner node['jmxtrans']['user']
   group node['jmxtrans']['user']

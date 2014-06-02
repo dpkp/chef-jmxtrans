@@ -9,3 +9,5 @@ RSpec.configure do |config|
   config.platform = 'ubuntu'
   config.version = '12.04'
 end
+
+at_exit { ChefSpec::Coverage.report! }

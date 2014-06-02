@@ -8,6 +8,4 @@
 # Apache 2.0 license
 #
 
-include_recipe 'jmxtrans::_setup'
-include_recipe %(jmxtrans::#{node[:jmxtrans][:install_method]})
-include_recipe 'jmxtrans::_configure'
+user node['jmxtrans']['user']

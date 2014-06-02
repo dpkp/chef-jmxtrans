@@ -2,25 +2,66 @@ require 'spec_helper'
 
 describe 'jmxtrans::default' do
   let(:chef_run) do
-    ChefSpec::Runner.new.converge(described_recipe)
+    ChefSpec::Runner.new do |node|
+      node.set[:jmxtrans][:install_method] = install_method
+    end.converge(described_recipe)
   end
-  it 'creates configuration template' do
-    expect(chef_run).to create_template('/etc/default/jmxtrans')
+
+  let :install_method do
+    'zip'
   end
-  it 'renders configuration file' do
-    expect(chef_run).to render_file('/etc/default/jmxtrans').with_content(/export JAR_FILE=.*jmxtrans-all\.jar/)
+
+  shared_examples_for 'a valid install method' do
+    it 'includes jmxtrans::_setup' do
+      expect(chef_run).to include_recipe('jmxtrans::_setup')
+    end
+
+    it 'includes jmxtrans::install_method recipe' do
+      expect(chef_run).to include_recipe(%(jmxtrans::#{install_method}))
+    end
+
+    it 'includes jmxtrans::server_queries' do
+      expect(chef_run).to include_recipe('jmxtrans::server_queries')
+    end
+
+    it 'includes jmxtrans::_configure' do
+      expect(chef_run).to include_recipe('jmxtrans::_configure')
+    end
   end
-  it 'creates server queries template' do
-    expect(chef_run).to create_template('set1.json')
+
+  context 'install_methods' do
+    context 'when install_method is :zip' do
+      it_behaves_like 'a valid install method' do
+        let :install_method do
+          :zip
+        end
+      end
+    end
+
+    context 'when install_method is \'zip\'' do
+      it_behaves_like 'a valid install method' do
+        let :install_method do
+          'zip'
+        end
+      end
+    end
+
+    context 'when install_method is :dpkg' do
+      it_behaves_like 'a valid install method' do
+        let :install_method do
+          :dpkg
+        end
+      end
+    end
+
+    context 'when install_method is \'dpkg\'' do
+      it_behaves_like 'a valid install method' do
+        let :install_method do
+          'dpkg'
+        end
+      end
+    end
+
   end
-  it 'renders server queries' do
-    expect(chef_run).to render_file("#{chef_run.node['jmxtrans']['home']}/json/set1.json").with_content(/\{.*"servers":.*\[.*\].*\}/m)
-  end
-  it 'starts jmxtrans' do
-    expect(chef_run).to start_service('jmxtrans')
-  end
-  it 'notifies restart' do
-    resource = chef_run.template('/etc/default/jmxtrans')
-    expect(resource).to notify('service[jmxtrans]').to(:restart).delayed
-  end
+
 end
